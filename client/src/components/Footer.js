@@ -4,7 +4,10 @@ import { ExternalLinkIcon } from "@chakra-ui/icons"
 const Footer = () => {
   return (
     <Box bg="steam.100" py="5" color="white" align="center">
-      <Link href="https://github.com/AleksiKuj" target={"_blank"}>
+      <Link
+        href="https://github.com/AleksiKuj/steam-game-picker"
+        target={"_blank"}
+      >
         Github <ExternalLinkIcon mx="2px" />
       </Link>
       <Text color="steam.500" fontSize="xs">

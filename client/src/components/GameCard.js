@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react"
 import { ExternalLinkIcon, CalendarIcon, TimeIcon } from "@chakra-ui/icons"
-const GameCard = ({ game }) => {
+const GameCard = ({ game, game2 }) => {
   const lastPlayed = (timestamp) => {
     if (timestamp === 0) return "Never"
     const date = new Date(timestamp * 1000)
@@ -43,13 +43,37 @@ const GameCard = ({ game }) => {
         <Stack mt="6" spacing="3">
           <Heading size="md">{game.name}</Heading>
           <List spacing={3}>
-            <ListItem>
-              <TimeIcon /> Playtime: {timePlayed(game.playtime_forever)}
-            </ListItem>
+            {!game2 ? (
+              <>
+                <ListItem>
+                  <TimeIcon /> Playtime: {timePlayed(game.playtime_forever)}
+                </ListItem>
 
-            <ListItem>
-              <CalendarIcon /> Last played: {lastPlayed(game.rtime_last_played)}
-            </ListItem>
+                <ListItem>
+                  <CalendarIcon /> Last played:{" "}
+                  {lastPlayed(game.rtime_last_played)}
+                </ListItem>
+              </>
+            ) : (
+              <>
+                <ListItem>
+                  <TimeIcon /> Playtime: {timePlayed(game.playtime_forever)}
+                </ListItem>
+
+                <ListItem>
+                  <CalendarIcon /> Last played:{" "}
+                  {lastPlayed(game.rtime_last_played)}
+                </ListItem>
+                <ListItem>
+                  <TimeIcon /> Playtime: {timePlayed(game2[0].playtime_forever)}
+                </ListItem>
+
+                <ListItem>
+                  <CalendarIcon /> Last played:
+                  {lastPlayed(game2[0].rtime_last_played)}
+                </ListItem>
+              </>
+            )}
           </List>
         </Stack>
       </CardBody>
